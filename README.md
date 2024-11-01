@@ -27,3 +27,7 @@
 10. cookie-parser 
 11. concurrently (node concurrent running)
 12. bcryptjs (node encryption usage algorithm)
+
+
+// changed JSON dev to run fullstack instead of dev
+// changed backend file to database.js instead of db.js
