@@ -26,7 +26,7 @@ Video demonstration of the project:
 <video width="640" height="480" controls>
   <source src="https://raw.githubusercontent.com/junjunjansent/raid_assignment_2024/master/video_of_product.MOV" type="video/quicktime">
 </video>
-
+[Watch the video](https://github.com/junjunjansent/raid_assignment_2024/blob/master/video_of_product.MOV)
 
 
 ## Pending Implementation:
