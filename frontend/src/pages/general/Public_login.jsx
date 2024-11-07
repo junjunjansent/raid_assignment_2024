@@ -3,7 +3,10 @@ import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch} from 'react-redux';
 import { toast } from 'react-toastify';
+
+// import assets
 import logo from '../../assets/groceraid_logo.png';
+import LoaderScreen from './LoaderScreen.jsx';
 
 // import slices
 import { useLoginMutation } from '../../redux/api/apiSlice_user.js';
@@ -42,6 +45,8 @@ const Public_login = () => {
             toast.error(err.data.message);
         }
     };
+
+    if (isLoading) return <div><LoaderScreen /></div>;
 
     return (
         <section className='mr-[4rem] mt-[5rem] pl-[10rem] flex flex-wrap font-serif'>

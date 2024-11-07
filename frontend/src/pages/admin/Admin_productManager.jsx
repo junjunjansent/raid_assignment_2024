@@ -2,9 +2,10 @@
 import { Link } from "react-router-dom";
 import { useEffect } from 'react';
 import { toast } from 'react-toastify';
+
+// import assets
 import logo from '../../assets/groceraid_logo.png';
 import LoaderScreen from '../general/LoaderScreen.jsx';
-
 
 // import slices
 import { 
@@ -37,7 +38,6 @@ const Admin_productManager = () => {
         }
     };
 
-
     return (
 
         <div className="pl-[10rem] container font-serif mr-[4rem] mt-[4rem]">
@@ -57,7 +57,7 @@ const Admin_productManager = () => {
             
             <div className="flex flex-wrap gap-4">
                 {products.map((product) => (
-                    <div
+                    <div key={product._id}
                         className='mt-4 mr-4 w-72 min-h-[10rem] bg-emerald-400 text-gray-800 shadow-lg rounded-md overflow-hidden'>
                         <img src={product.image} className='object-contain justify-center' alt={product.name} />
                         <div className='p-5 flex flex-col gap-2'>

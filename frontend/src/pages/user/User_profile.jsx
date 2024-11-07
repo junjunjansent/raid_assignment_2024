@@ -11,7 +11,9 @@ import { useGetUserProfileQuery } from '../../redux/api/apiSlice_user.js';
 const User_profile = () => {
     const { data: user, refetch, isLoading, error } = useGetUserProfileQuery();
 
-    console.log('Fetched users:', user); // Log the fetched user
+    console.log('Fetched users:', user);
+    console.log('Loading state:', isLoading);
+    console.log('Error state:', error);
 
     // const [data_username, setUsername] = useState("");
     // const [data_email, setEmail] = useState("");
@@ -29,11 +31,12 @@ const User_profile = () => {
         }
     };
 
+    // Run effect when user data changes
     useEffect(() => {
         if (user) {        
             fetchQuote(); 
         }
-    }, [user]); // Run effect when user data changes
+    }, [user]); 
 
     return (
         <section className='pl-[10rem] flex flex-wrap font-serif'>
@@ -44,6 +47,8 @@ const User_profile = () => {
 
                 {isLoading ? (
                     <LoaderScreen />
+                ) : error ? (
+                    <div className="text-red-500">Error loading user profile.</div>
                 ) : (
 
                     <div className='container w-[40rem]'>
@@ -55,12 +60,12 @@ const User_profile = () => {
 
                         <div className="grid grid-cols-[0.5fr_2fr] gap-[2rem] my-[2rem] items-center">
                             <div className='block text-sm font-large text-white'>Username:</div>
-                            <div className='font-semibold text-gray-300'>{user.username}</div>
+                            <div className='font-semibold text-gray-300'>{user ? user.username : 'N/A'}</div>
                         </div>
 
                         <div className="grid grid-cols-[0.5fr_2fr] gap-[2rem] my-[2rem] items-center">
                             <div className='block text-sm font-large text-white'>Email Address:</div>
-                            <div className='font-semibold text-gray-300'>{user.email}</div>
+                            <div className='font-semibold text-gray-300'>{user ? user.email : 'N/A'}</div>
                         </div>
 
                         <Link to='/user_orders' className='bg-blue-500 hover:bg-blue-900 text-white px-4 py-2 rounded cursor-pointer my-[1rem]'>

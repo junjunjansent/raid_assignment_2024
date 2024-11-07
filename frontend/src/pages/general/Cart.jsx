@@ -12,15 +12,22 @@ import { useCreateOrderMutation } from '../../redux/api/apiSlice_order.js';
 // import assets
 import logo from '../../assets/groceraid_logo.png';
 import LoaderScreen from './LoaderScreen.jsx';
-import { ImBin } from "react-icons/im";
+import { ImEnter, ImBin } from "react-icons/im";
 
 const Cart = () => {
     const { data: products, refetch: refetchProducts, isLoading: isLoadingProducts, error: errorProducts} = useGetProductsAllQuery();
     const { data: user, refetch: refetchUser , isLoading: isLoadingUser, error: errorUser } = useGetUserProfileQuery();
     const [createOrder, { isLoading }] = useCreateOrderMutation();
 
+    console.log('Fetched users:', user);
+    console.log('Fetched products:', products);
+    console.log('Loading state:', isLoadingUser, isLoadingUser, isLoading);
+    console.log('Error state:', errorUser, errorProducts);
+
     const [cartItems, setCartItems] = useState([]);
     const [totalCost, setTotalCost] = useState(0);
+    
+    console.log('Products:', products);
 
     const navigate = useNavigate();
 
@@ -83,17 +90,33 @@ const Cart = () => {
         } catch (err) {
             toast.error(err.data.message);
         }
-        };
+    };
 
-    if (isLoadingProducts) return <div><LoaderScreen /></div>;
-    if (errorProducts || errorUser ) return <div>Error loading data.</div>;
+    if (isLoadingUser || isLoadingUser) return <div><LoaderScreen /></div>;
+    if (errorProducts) return (
+            <div>Error loading products data.
+                {errorProducts && <div className="error-message">{errorProducts.data?.message || errorProducts.error}</div>}
+            </div>
+        );
 
     return (
         <div className="pl-[10rem] container font-serif mr-[4rem] mt-[4rem]">
             <img className='h-16 md:h-20 lg:h-24 w-auto mb-2' src={logo} alt='logo'/>
             <h1 className="text-2xl font-semibold mb-2">It's Shopping Time</h1>
         
-            {cartItems.length === 0 ? (
+            {errorUser ? (
+                <div>
+                    <p className='mb-4'>But you need to log in to view your cart!</p>
+                    <Link to='/login'>
+                        <button className='bg-blue-500 hover:bg-blue-900 text-white px-4 py-2 rounded flex items-center'>
+                            <ImEnter className="mr-2" size={20} />
+                            Go to Login
+                        </button>
+                    </Link>
+                    
+                </div>
+
+            ) : cartItems.length === 0 ? (
                 <p>Your Cart is Empty :( </p>
             ) : (
                 <div className="flex flex-col space-y-4">
@@ -137,14 +160,14 @@ const Cart = () => {
                             </div>
                         );
                     })}
+                    <div className="mt-4 text-lg font-bold">
+                        Total Cost: ${totalCost.toFixed(2)}
+                    </div>
+                    <button disabled={isLoadingProducts} onClick={checkoutHandler} className="mt-2 bg-green-500 hover:bg-green-900 text-white px-4 py-2 rounded cursor-pointer my-[1rem]">
+                        {isLoadingUser ? 'Checking Out...' : 'Checkout'}
+                    </button>
                 </div>
             )}
-            <div className="mt-4 text-lg font-bold">
-                Total Cost: ${totalCost.toFixed(2)}
-            </div>
-            <button disabled={isLoadingProducts} onClick={checkoutHandler} className="mt-2 bg-green-500 hover:bg-green-900 text-white px-4 py-2 rounded cursor-pointer my-[1rem]">
-                {isLoadingUser ? 'Checking Out...' : 'Checkout'}
-            </button>
         </div>
     );
 };

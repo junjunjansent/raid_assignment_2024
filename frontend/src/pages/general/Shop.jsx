@@ -11,10 +11,13 @@ import logo from '../../assets/groceraid_logo.png';
 import LoaderScreen from './LoaderScreen.jsx';
 import { ImCart } from "react-icons/im";
 
-
 const Shop = () => {
     const { data: products, refetch, isLoading, error } = useGetProductsAllQuery();
     
+    console.log('Fetched products:', products);
+    console.log('Loading state:', isLoading);
+    console.log('Error state:', error);
+
     console.log('Fetched products for Troubleshooting:', products); // Log the fetched products
 
     const addToCart = (product) => {
@@ -58,7 +61,7 @@ const Shop = () => {
             
             <div className="flex flex-wrap gap-4">
                 {products.map((product) => (
-                    <div
+                    <div key={product._id}
                         className='mt-4 mr-4 w-72 min-h-[10rem] bg-blue-300 text-gray-800 shadow-lg rounded-md overflow-hidden'>
                         <img src={product.image} className='object-contain justify-center' alt={product.name} />
                         <div className='p-5 flex flex-col gap-2'>

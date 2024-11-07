@@ -26,7 +26,7 @@ export const apiSlice_user = apiSlice.injectEndpoints({
             query: (data) => ({
                 url: `${USER_URL}/`,
                 method: "POST",
-                body: data,
+                body: data, 
             }),
         }),
 
@@ -34,6 +34,7 @@ export const apiSlice_user = apiSlice.injectEndpoints({
         getUserProfile: builder.query({
             query: () => ({
                 url: `${USER_URL}/profile`,
+                credentials: 'include', // As default is 'same-origin'
             }),
             providesTags: ["User"],
             keepUnusedDataFor: 5,
