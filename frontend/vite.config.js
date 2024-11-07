@@ -5,6 +5,11 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
 
+  // Should be default m being explicit due to vite not found in deployment issues
+  build: {
+    outDir: 'dist', 
+  },
+
   // to allow testing on local server
   server: {
     proxy: {
