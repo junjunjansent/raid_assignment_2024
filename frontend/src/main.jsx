@@ -26,10 +26,10 @@ import User_profile from "./pages/user/User_profile.jsx";
 
 // import admin routes
 import Admin_privateRoute from "./pages/admin/Admin_privateRoute.jsx";
-import Admin_userManager from "./pages/admin/Admin_userManager";
-import Admin_productManager from "./pages/admin/Admin_productManager";
-import Admin_createProduct from "./pages/admin/Admin_createProduct";
-import Admin_orderManager from "./pages/Admin/Admin_orderManager.jsx";
+import Admin_userManager from "./pages/admin/Admin_userManager.jsx";
+import Admin_productManager from "./pages/admin/Admin_productManager.jsx";
+import Admin_createProduct from "./pages/admin/Admin_createProduct.jsx";
+import Admin_orderManager from "./pages/admin/Admin_orderManager.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
