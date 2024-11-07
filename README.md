@@ -2,6 +2,14 @@
 
 ![groceRAiD Logo](frontend/src/assets/groceraid_logo.png)
 
+## App deployment
+https://raid-assignment-2024-43778e9e9287.herokuapp.com/
+
+However the app is unable to load despite troubleshooting.
+Code: 'MODULE_NOT_FOUND' at node:internal/main/run_main_module:36:49 
+Node.js v22.11.0
+
+
 ## Description
 
 This project is a functional e-commerce application built using MERN (MongoDB, Express.js, React, Node.js) that allows users to browse and purchase fruits online. Redux was implemented for state management and Tailwind CSS for attempted responsive design, ensuring a scalable experience for multiple users. While the core functionalities are complete, there are definitely opportunities for further improvements and enhancements.
