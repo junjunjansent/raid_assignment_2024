@@ -54,7 +54,7 @@ app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 
 // Send all other requests to the React app
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));
+    res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
   });
 
 // port listener
