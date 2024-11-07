@@ -163,7 +163,7 @@ const Cart = () => {
                     <div className="mt-4 text-lg font-bold">
                         Total Cost: ${totalCost.toFixed(2)}
                     </div>
-                    <button disabled={isLoadingProducts} onClick={checkoutHandler} className="mt-2 bg-green-500 hover:bg-green-900 text-white px-4 py-2 rounded cursor-pointer my-[1rem]">
+                    <button disabled={isLoadingProducts} onClick={checkoutHandler} className="flex-grow-0 mt-2 bg-green-500 hover:bg-green-900 text-white px-4 py-2 rounded cursor-pointer my-[1rem]">
                         {isLoadingUser ? 'Checking Out...' : 'Checkout'}
                     </button>
                 </div>

@@ -16,7 +16,7 @@ const Admin_createProduct = () => {
     const [image, setImage] = useState('');
     const [brand, setBrand] = useState('');
     const [description, setDescription] = useState('');
-    const [price, setPrice] = useState('');
+    const [price, setPrice] = useState(0);
     const [stockQty, setStockQty] = useState(0);
 
     // const dispatch = useDispatch();
@@ -154,7 +154,7 @@ const Admin_createProduct = () => {
                             Description
                         </label> 
                         <textarea type='text' className='p-2 border rounded w-full h-32 mt-1 align-text-top text-wrap'
-                            placeholder='Input Stock Quantity' 
+                            placeholder='Input Description' 
                             value={description} onChange={(input) => setDescription(input.target.value)}
                         />
                     </div>
