@@ -17,7 +17,7 @@ import upload_Routes from './routers/upload_Routes.js'
 
 // port listener with hidden port variable in .env
 // const port = import.meta.env.VITE_PORT || 3000;
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8000;
 
 // call database
 connectDB();
