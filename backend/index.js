@@ -32,8 +32,9 @@ app.use(cors({
   credentials: true, 
 }));
 
-// Serve static files from the React frontend app
-app.use(express.static(path.join(__dirname, '../frontend/dist'))); 
+// Serve static files from the React frontend app (but done on ./dist due copied over dist folder from frontend)
+// app.use(express.static(path.join(__dirname, '../frontend/dist'))); 
+app.use(express.static(path.join(__dirname, './dist'))); 
 
 // set middleware to read json files in request
 app.use(express.json());                            // parse json in request
@@ -54,7 +55,8 @@ app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 
 // Send all other requests to the React app
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
+    // res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
+    res.sendFile(path.join(__dirname, './dist/index.html'));
   });
 
 // port listener
